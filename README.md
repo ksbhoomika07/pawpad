@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Pawpad Website
 
 Conscious pet grooming & wellness studio, Kalyan Nagar, Bengaluru. This repo is the
@@ -102,3 +103,6 @@ Pages once DNS is updated — see `TODO.md` for that cutover step.
 
 `dist/` (only produced by option B) is git-ignored — it's a disposable build artifact,
 not checked in.
+=======
+# pawpad
+>>>>>>> 7f7d6bf83d846f0d9243052d7cfef047d528560f
