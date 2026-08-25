@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PFGEC Application — Pawpad Feline Grooming Essentials Certificate</title>
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<style>
+  :root{
+    --bg:#F8F6EF;--ink:#1C1B19;--ink-soft:#5B5546;
+    --gold:#B08D4E;--driftwood:#b18d4e;--gold-deep:#96702E;--rule:#E3DCC9;--field-bg:#FFFFFF;--max:680px;
+    --f-display:"Fraunces","Boston Angel",Georgia,serif;
+    --f-body:"Source Serif 4",Georgia,serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+  .desktop-only{display:flex;} .mobile-only{display:none;}
+  @media(max-width:900px){.desktop-only{display:none !important;}.mobile-only{display:flex !important;}}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 0;transition:background .3s ease,backdrop-filter .3s ease,padding .2s ease;}
+  .nav.scrolled{background:color-mix(in oklab,var(--cream-bg),transparent 12%);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:10px 0;border-bottom:1px solid color-mix(in oklab,var(--ink),transparent 92%);}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .nav-brand img{height:140px;width:auto;max-width:min(46vw,380px);object-fit:contain;transition:height .2s ease;display:block;}
+  .nav.scrolled .nav-brand img{height:105px;}
+  @media(max-width:900px){.nav-brand img{height:80px;}.nav.scrolled .nav-brand img{height:65px;}}
+  .nav-links{display:flex;gap:6px;align-items:center;}
+  .nav-link{padding:10px 16px;border-radius:999px;font-family:var(--f-body);font-size:14px;font-weight:500;color:var(--ink);opacity:.78;text-decoration:none;transition:all .2s ease;position:relative;}
+  .nav-link:hover{opacity:1;background:color-mix(in oklab,var(--champagne),transparent 30%);text-decoration:none;}
+  .nav-link.active{opacity:1;color:var(--driftwood-deep);}
+  .nav-link.active::after{content:"";position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:4px;height:4px;background:var(--driftwood);border-radius:50%;}
+  .nav-cta{display:flex;align-items:center;gap:12px;}
+  .nav-cart-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:color-mix(in oklab,var(--champagne),transparent 40%);color:var(--ink);border:1px solid color-mix(in oklab,var(--ink),transparent 85%);cursor:pointer;text-decoration:none;transition:all .2s ease;}
+  .nav-cart-btn:hover{background:var(--ink);color:var(--cream-bg);transform:translateY(-1px);text-decoration:none;}
+  .mobile-nav-actions{display:flex;align-items:center;gap:8px;}
+  .hamburger{display:flex;flex-direction:column;gap:5px;padding:10px;background:none;border:none;cursor:pointer;}
+  .hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);border-radius:2px;}
+  .mobile-menu{position:fixed;inset:0;z-index:90;background:color-mix(in oklab,var(--ink),transparent 40%);backdrop-filter:blur(8px);animation:fadeIn .25s ease both;}
+  .mobile-menu-inner{position:absolute;top:0;right:0;bottom:0;width:min(360px,86%);background:var(--cream-bg);padding:80px 32px 32px;display:flex;flex-direction:column;gap:24px;animation:slideIn .35s ease both;}
+  .mobile-menu-inner .close{position:absolute;top:20px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--champagne);font-size:24px;line-height:1;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+  .mobile-links{display:flex;flex-direction:column;gap:2px;}
+  .m-link{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid color-mix(in oklab,var(--ink),transparent 88%);font-family:var(--f-display);font-size:28px;color:var(--ink);text-decoration:none;}
+  .m-link:hover{text-decoration:none;color:var(--driftwood);}
+  .m-link.active{color:var(--driftwood);}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+
+  .wa-float{position:fixed;right:clamp(16px,3vw,28px);bottom:calc(clamp(16px,3vw,28px) + env(safe-area-inset-bottom,0px));z-index:40;width:82px;height:82px;display:inline-flex;align-items:center;justify-content:center;transition:transform .2s ease;text-decoration:none;}
+  .wa-float:hover{transform:translateY(-3px);}
+  .wa-float img{width:100%;height:100%;object-fit:contain;display:block;-webkit-user-drag:none;}
+  .wa-tip{position:absolute;right:calc(100% + 12px);top:50%;transform:translateY(-50%) translateX(6px);background:var(--ink);color:var(--cream-bg);padding:8px 14px;border-radius:999px;font-family:var(--f-body);font-size:13px;font-weight:600;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;}
+  .wa-float:hover .wa-tip{opacity:1;transform:translateY(-50%) translateX(0);}
+  @media(max-width:700px){.wa-float{width:56px;height:56px;}}
+
+  .page{max-width:var(--max);margin:0 auto;padding:180px 24px 100px;}
+  .back-nav{margin-bottom:28px;}
+  .back-link{font-size:14.5px;font-weight:600;color:var(--gold-deep);text-decoration:none;transition:color .2s ease;display:inline-flex;align-items:center;gap:6px;}
+  .back-link:hover{color:var(--ink);text-decoration:underline;}
+  .eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:16px;}
+  h1{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(28px,4vw,38px);line-height:1.2;margin:0 0 12px;}
+  .sub{color:var(--ink-soft);font-size:16px;margin-bottom:36px;}
+  hr{border:none;border-top:1px solid var(--rule);margin:0 0 36px;}
+  fieldset{border:none;padding:0;margin:0 0 40px;}
+  legend{font-family:"Fraunces",serif;font-weight:500;font-size:20px;margin-bottom:18px;padding:0;}
+  .field{margin-bottom:20px;}
+  label{display:block;font-weight:600;font-size:15px;margin-bottom:6px;}
+  .hint{font-weight:400;color:var(--ink-soft);font-size:13px;margin-top:4px;}
+  input[type=text],input[type=email],input[type=tel],textarea{width:100%;padding:11px 12px;border:1px solid var(--rule);border-radius:4px;background:var(--field-bg);font-family:"Source Serif 4",serif;font-size:15px;color:var(--ink);}
+  textarea{min-height:80px;resize:vertical;}
+  .radio-row,.check-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:15px;}
+  .radio-row input,.check-row input{margin-top:4px;flex-shrink:0;}
+  .ack{background:#FDF8EC;border:1px solid var(--rule);border-radius:6px;padding:16px 18px;margin-bottom:14px;}
+  .cta{display:inline-block;margin-top:16px;background:#1C1B19;color:#FDF8EC;font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:15px 34px;border:none;border-radius:4px;cursor:pointer;transition:background .2s ease;}
+  .cta:hover{background:#3A3835;}
+  .note{margin-top:48px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-soft);font-style:italic;}
+  @media(max-width:900px){.page{padding:130px 20px 70px;}}
+
+  @media (pointer: fine) {
+    body, a, button, input, select, textarea, label, [role="button"], .nav-link, .m-link, .nav-cart-btn, .hamburger, .back-link, .cta {
+      cursor: none !important;
+    }
+  }
+
+</style>
+</head>
+<body data-palette="warm" data-motion="lively" data-density="default">
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-brand" aria-label="Pawpad home">
+      <img src="../assets/img/logo-pawpad-new-transparent.png" alt="Pawpad">
+    </a>
+    <nav class="nav-links desktop-only" aria-label="Primary">
+      <a href="../grooming.html" class="nav-link">Grooming</a>
+      <a href="../boarding.html" class="nav-link">Boarding</a>
+      <a href="../experience.html" class="nav-link">Experience</a>
+      <a href="../courses.html" class="nav-link active">Courses</a>
+      <a href="../about.html" class="nav-link">About</a>
+      <a href="../myotherapy.html" class="nav-link">Myotherapy</a>
+      <a href="../contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="nav-cta desktop-only">
+      <a href="../courses.html" class="nav-cart-btn" aria-label="Back to Courses">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      </a>
+    </div>
+    <div class="mobile-nav-actions mobile-only">
+      <a href="../courses.html" class="nav-cart-btn mobile-cart-btn" aria-label="Back to Courses">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      </a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" style="display:none;">
+  <div class="mobile-menu-inner">
+    <button class="close" id="mobile-menu-close" aria-label="Close menu">&times;</button>
+    <div class="mobile-links">
+      <a href="../grooming.html" class="m-link"><span>Grooming</span><span>&rarr;</span></a>
+      <a href="../boarding.html" class="m-link"><span>Boarding</span><span>&rarr;</span></a>
+      <a href="../experience.html" class="m-link"><span>Experience</span><span>&rarr;</span></a>
+      <a href="../courses.html" class="m-link active"><span>Courses</span><span>&rarr;</span></a>
+      <a href="../about.html" class="m-link"><span>About</span><span>&rarr;</span></a>
+      <a href="../myotherapy.html" class="m-link"><span>Myotherapy</span><span>&rarr;</span></a>
+      <a href="../contact.html" class="m-link"><span>Contact</span><span>&rarr;</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="back-nav">
+    <a href="../courses.html" class="back-link">← Back to Courses</a>
+  </div>
+
+  <div class="eyebrow">Application · PFGEC</div>
+  <h1>Pawpad Feline Grooming Essentials Certificate</h1>
+  <p class="sub">1-week programme · ₹30,000 · Cohort of 5 · Stage 1 of 4 in our admissions process</p>
+  <hr>
+
+  <form action="#" method="POST">
+    <input type="hidden" name="_next" value="success.html">
+
+    <fieldset>
+      <legend>Your details</legend>
+      <div class="field"><label for="name">Full name</label><input type="text" id="name" name="name" required></div>
+      <div class="field"><label for="phone">Phone number</label><input type="tel" id="phone" name="phone" required></div>
+      <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+      <div class="field"><label for="city">City</label><input type="text" id="city" name="city" required>
+        <div class="hint">This is an in-person programme run in Bengaluru.</div></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>About you</legend>
+      <div class="field"><label for="why">Why do you want to take this course?</label><textarea id="why" name="why" required></textarea></div>
+      <div class="field"><label for="experience">Any prior experience with grooming, or hands-on work with cats?</label><textarea id="experience" name="experience"></textarea>
+        <div class="hint">"None" is a completely fine answer.</div></div>
+      <div class="field"><label for="handling">How would you currently handle a cat that's resisting or struggling during a task?</label><textarea id="handling" name="handling" required></textarea></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Fit &amp; expectations</legend>
+      <div class="field">
+        <label>This is a career-pathway programme, not designed for personal/hobbyist use. Does this match what you're looking for?</label>
+        <div class="radio-row"><input type="radio" id="career-yes" name="career_fit" value="yes" required><label for="career-yes" style="font-weight:400;">Yes</label></div>
+        <div class="radio-row"><input type="radio" id="career-no" name="career_fit" value="no"><label for="career-no" style="font-weight:400;">No</label></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>What this course actually involves — please confirm you understand</legend>
+      <div class="ack"><div class="check-row"><input type="checkbox" id="ack1" name="ack_live_day1" required><label for="ack1" style="font-weight:400;">This course is hands-on with a live cat from Day 1, with no practice-model step for bathing, brushing, or de-matting.</label></div></div>
+      <div class="ack"><div class="check-row"><input type="checkbox" id="ack2" name="ack_demo_only" required><label for="ack2" style="font-weight:400;">Hygiene clip and nail trimming are demonstration-only at this level, given how easily cat skin is nicked — I will not practice these myself.</label></div></div>
+      <div class="ack"><div class="check-row"><input type="checkbox" id="ack3" name="ack_exam_optional" required><label for="ack3" style="font-weight:400;">I understand I may optionally sit an internationally recognised bather-level safety certification exam for cat grooming after this course, at my own additional cost, billed at actuals — this tier's skill set matches that exam's scope, with no guarantee of my personal readiness.</label></div></div>
+      <div class="ack"><div class="check-row"><input type="checkbox" id="ack4" name="ack_fees" required><label for="ack4" style="font-weight:400;">I understand the course fee (₹30,000), deposit (₹7,500, non-refundable, due on acceptance), and cancellation policy.</label></div></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Physical readiness &amp; wellbeing</legend>
+      <div class="field">
+        <label>This course involves standing for extended periods, lifting and holding animals, and repetitive hand movements. Are you able to do this safely?</label>
+        <div class="radio-row"><input type="radio" id="phys-yes" name="physical_capability" value="yes" required><label for="phys-yes" style="font-weight:400;">Yes</label></div>
+        <div class="radio-row"><input type="radio" id="phys-no" name="physical_capability" value="no"><label for="phys-no" style="font-weight:400;">No</label></div>
+        <div class="field" style="margin-top:12px;"><label for="phys-context" style="font-weight:400;">Optional — add context if you would like</label><textarea id="phys-context" name="physical_capability_context"></textarea></div>
+      </div>
+      <div class="field">
+        <label for="health-optional">Optional and confidential — not used in the acceptance decision: is there anything about your health we should be aware of for your safety during hands-on activities (e.g., a recent surgery, an allergy, or a condition that could be affected by physical exertion or animal contact)?</label>
+        <textarea id="health-optional" name="health_disclosure"></textarea>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="cta">Submit Application</button>
+  </form>
+
+  <div class="note">This form is not connected to a submission backend yet — it needs to be wired to an email service, Google Form, or your site platform's native form handling before it goes live. Submitting this covers Stage 1 only; interview scheduling, the prerequisite check, and the temperament/safety assessment happen after review.</div>
+</div>
+
+<a href="https://wa.me/918885349267?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Chat with Pawpad on WhatsApp">
+  <img src="../assets/img/whatsapp-paw.png" alt="Chat with Pawpad on WhatsApp" draggable="false">
+  <span class="wa-tip desktop-only">Chat on WhatsApp</span>
+</a>
+
+<script>
+  (function(){
+    var nav=document.querySelector('.nav');
+    window.addEventListener('scroll',function(){nav&&(window.scrollY>24?nav.classList.add('scrolled'):nav.classList.remove('scrolled'));},{passive:true});
+    if(window.scrollY>24)nav&&nav.classList.add('scrolled');
+    var hamburger=document.getElementById('hamburger-btn'),menu=document.getElementById('mobile-menu'),closeBtn=document.getElementById('mobile-menu-close');
+    hamburger&&menu&&hamburger.addEventListener('click',function(){menu.style.display='block';});
+    closeBtn&&menu&&closeBtn.addEventListener('click',function(){menu.style.display='none';});
+    menu&&menu.addEventListener('click',function(e){if(e.target===menu)menu.style.display='none';});
+  })();
+</script>
+  <script src="../assets/js/cursor.js"></script>
+</body>
+</html>
